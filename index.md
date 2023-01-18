@@ -10,4 +10,4 @@ Our goal as a community is to create a positive and respectful environment for o
 
 Our community is [hosted on Discord, so come join us over on there!](https://discord.xeriscape.network/) If your interested in something extra besides the usual hangout/chit-chat, we also have a cross-platform Destiny 2 clan that we are currently recruiting guardians for and a heavily work-in-process Minecraft server network project.
 
-[Discord Community](https://discord.xeriscape.network/)
+[Discord Server](https://discord.xeriscape.network/) // [Steam Community](https://curator.xeriscape.network/) // [Website](https://xeriscape.network/
