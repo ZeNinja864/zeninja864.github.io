@@ -3,6 +3,11 @@
 * Stock Trader & Lifeless Destiny player
 * Founder of Xeriscape & Telzenith
 
+## Contact Information
+If you need to contact me about a specific matter, please use one of the following methods:
+* [Through my community, The Xeriscape Network](https://discord.xeriscape.network/) **(Preferred)**
+* [Discord message request - Discord username: ZeNinja864#6464](https://support.discord.com/hc/en-us/articles/7924992471191-Message-Requests)
+
 ## The Xeriscape Network
 I am the founding member of [The Xeriscape Network](https://xeriscape.network/); The Xeriscape Network is a friendly community founded in 2010 for gamers to connect and grow. We welcome people from all walks of life and have members from around the world.
 
