@@ -1,7 +1,7 @@
 # ZeNinja864
 * Sr. Network Administrator
 * Stock Trader & Lifeless Destiny player
-* Founder of Xeriscape & Telzenith
+* Founder of [Xeriscape](https://xeriscape.network/) & [Telzenith](https://telzenith.xyz/)
 
 ## Contact Information
 If you need to contact me about a specific matter, please use one of the following methods:
