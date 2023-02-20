@@ -1,57 +1,81 @@
 <html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.1/dist/vue.global.min.js"></script>
+  </head>
   <body>
+    <div id="app">
+      <table>
+        <thead>
+          <tr>
+            <th @click="sortBy('name')">Name</th>
+            <th @click="sortBy('date')">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="file in sortedFiles" :key="file.sha">
+            <td><a :href="file.html_url">{{ file.name }}</a></td>
+            <td>{{ formatDate(file.date) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <script>
-      async function fetchDirectoryContents(path) {
-        const response = await fetch(`https://api.github.com/repos/zeninja864/zeninja864.github.io/contents/${path}`);
-        let data = await response.json();
-        data = data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-        let htmlString = '<table>';
-        htmlString += '<tr><th>File Name</th><th>Creation Date</th></tr>';
+      const apiUrl = 'https://api.github.com/repos/zeninja864/zeninja864.github.io/contents/posts';
 
-        for (let item of data) {
-          if (item.type === 'file') {
-            const response = await fetch(`https://api.github.com/repos/zeninja864/zeninja864.github.io/contents/${item.path}`);
-            const file = await response.json();
-            const firstHeader = file.content.match(/^# (.*)/m)?.[1] || item.name;
-            htmlString += `<tr><td>${firstHeader}</td><td>${new Date(item.created_at).toLocaleString()}</td></tr>`;
-          } else if (item.type === 'dir') {
-            const subdirectory = await fetchDirectoryContents(item.path);
-            htmlString += `<tr><td colspan="2">${item.name}</td></tr>${subdirectory}`;
+      const app = Vue.createApp({
+        data() {
+          return {
+            files: [],
+            sortKey: 'date',
+            sortDirection: 'desc'
+          }
+        },
+        async created() {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          this.files = data.filter(file => file.type === 'file').map(file => {
+            return {
+              name: file.name.replace(/\.md$/, ''),
+              sha: file.sha,
+              date: new Date(file.date)
+            };
+          });
+        },
+        computed: {
+          sortedFiles() {
+            const multiplier = this.sortDirection === 'desc' ? -1 : 1;
+            return this.files.sort((a, b) => {
+              if (a[this.sortKey] < b[this.sortKey]) {
+                return -1 * multiplier;
+              }
+              if (a[this.sortKey] > b[this.sortKey]) {
+                return 1 * multiplier;
+              }
+              return 0;
+            });
+          }
+        },
+        methods: {
+          sortBy(key) {
+            if (this.sortKey === key) {
+              this.sortDirection = this.sortDirection === 'desc' ? 'asc' : 'desc';
+            } else {
+              this.sortKey = key;
+              this.sortDirection = 'desc';
+            }
+          },
+          formatDate(date) {
+            const options = {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            };
+            return date.toLocaleDateString('en-US', options);
           }
         }
+      });
 
-        htmlString += '</table>';
-        return htmlString;
-      }
-
-      (async () => {
-        const html = await fetchDirectoryContents('posts');
-        document.getElementsByTagName('body')[0].innerHTML = html;
-
-        const table = document.querySelector('table');
-        const headerCells = table.querySelectorAll('th');
-        headerCells.forEach(cell => {
-          cell.addEventListener('click', () => {
-            const cellIndex = Array.from(headerCells).indexOf(cell);
-            const sortFunction = cellIndex === 0 ? sortByFileName : sortByCreationDate;
-            const rows = Array.from(table.rows).slice(1); // Skip header row
-            rows.sort(sortFunction);
-            table.tBodies[0].append(...rows);
-          });
-        });
-
-        function sortByFileName(rowA, rowB) {
-          const nameA = rowA.cells[0].textContent;
-          const nameB = rowB.cells[0].textContent;
-          return nameA.localeCompare(nameB);
-        }
-
-        function sortByCreationDate(rowA, rowB) {
-          const dateA = new Date(rowA.cells[1].textContent);
-          const dateB = new Date(rowB.cells[1].textContent);
-          return dateA - dateB;
-        }
-      })()
+      app.mount('#app');
     </script>
   </body>
 </html>
