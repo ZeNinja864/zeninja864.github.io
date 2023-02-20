@@ -8,7 +8,7 @@ If you need to contact me about a specific matter, please use one of the followi
 * [The Xeriscape Network](https://discord.xeriscape.network/) **(Preferred)**
 * [Discord Message Request](https://support.discord.com/hc/en-us/articles/7924992471191-Message-Requests) <i>(ZeNinja864#6464)</i>
 
-Don not contact me regarding item trades or services; I don't offer them to anyone as I do not have open trades on Steam. Please don't send me unsolicited trade or friend requests to ask about items that aren't up for trade. **If you do, I will block you**; Make sure you understand my contact conditions before reaching out to me.
+**Do not** contact me regarding item trades or services; I don't offer them to anyone as I do not have open trades on Steam. Please don't send me unsolicited trade or friend requests to ask about items that aren't up for trade. **If you do, I will block you**; Make sure you understand my contact conditions before reaching out to me.
 
 ## The Xeriscape Network
 I am the founding member of [The Xeriscape Network](https://xeriscape.network/); The Xeriscape Network is a friendly community founded in 2010 for gamers to connect and grow. We welcome people from all walks of life and have members from around the world.
