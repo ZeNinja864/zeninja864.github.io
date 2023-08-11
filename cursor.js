@@ -1,5 +1,10 @@
-var cursorActive = true; // Define `cursorActive` with a starting value of `true`
-var blinkSpeed = 500; // Define `blinkSpeed` with a value of `500` for 500 ms
+// cursor.js -- 'blink' the HTML element with an ID of `cursor`
+// Causes a blinking effect on the element marked with an ID of `cursor` by swapping the opacity between 0 and 1
+
+// Define `cursorActive` with a starting value of `true`
+var cursorActive = true;
+// Define `blinkSpeed` with a value of `500` for 500 ms between 'blinks'
+var blinkSpeed = 500;
 
 setInterval(() => {
     // Check if cursorActive

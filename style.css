@@ -50,6 +50,7 @@ body {
     font-family: 'Bebas Neue';
     font-size: 5em;
     color: white;
+    margin-bottom: -25px;
 }
 #social-links {
     font-family: 'Bebas Neue';
@@ -67,8 +68,8 @@ body {
 
 /* Profile picture circular cropper */
 .image-cropper {
-    width: 184px;
-    height: 184px;
+    width: 288px;
+    height: 288px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
