@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <title>{{ page.title }}</title>
+
+        {% include page-meta.html %}
+
+        <link rel="canonical" href="/" />
+        <link rel="icon" type="image/x-icon" href="{{ '../assets/images/favicon.png' | relative_url }}">
+        <link rel="stylesheet" href="{{ '../assets/css/main-dark.css' | relative_url }}">
+
+        <script src="{{ '../assets/scripts/process-breaks.js' | relative_url }}"></script>
+
+
+        <style>
+            pre {
+                white-space: pre-wrap; /* Maintains white-space and new lines in code blocks */
+            }
+
+            code {
+                white-space: pre-wrap; /* Ensures new lines in inline code are handled properly */
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                {% include page-header.html %}
+            </header>
+            <main>
+                - Log Entry "<span style="color:lightgreen">{{ page.title }}</span>"<br><br>
+                > Author: <span style="color:lightgreen">ZeNinja864</span><br>
+                > Inserted on: <span style="color:lightgreen">{{ page.date | date: "%B %d, %Y" }}</span><br>
+                ==========================================<br><br>
+                <article>
+                    <!-- {{ content | newline_to_br }} -->
+                    {{ content }}
+                    <p>// ZeNinja864</p>
+                    <br>
+                </article>
+            </main>
+                {% include post-footer.html %}
+        </div>
+    </body>
+</html>

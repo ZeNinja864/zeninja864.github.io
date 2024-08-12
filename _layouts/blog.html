@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>{{ page.permalink }}</title>
+
+        {% include page-meta.html %}
+
+        <link rel="canonical" href="/" />
+        <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png">
+        <link rel="stylesheet" href="{{ '../assets/css/main-dark.css' | relative_url }}">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                {% include page-header.html %}
+            </header>
+
+            <main>
+                <p>Welcome to my own little corner of the internet, where I share my thoughts, dive into various projects, and explore whatever else captures my interest.<br><br>You can find my recent postings below with a complete collection in the <a href="/archive">archive</a>.</p>
+                <h1 id="-posts">&gt; Articles</h1>
+                <br />  <!-- add line break if there is any content -->
+                <ul>
+                {% for post in site.posts limit:9%}
+                    <li>
+                        [{{ post.date | date: "%Y-%m-%d" }}] <a href="{{ post.url }}">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+                <li>
+                    Visit the <a href="/archive">archive</a> for older posts.
+                </li>
+                </ul>
+            </main>
+            <footer>
+                
+            </footer>
+        </div>
+    </body>
+</html>

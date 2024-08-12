@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>{{ page.permalink }}</title>
+
+        {% include page-meta.html %}
+
+        <link rel="canonical" href="/" />
+        <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png">
+        <link rel="stylesheet" href="{{ '../assets/css/main-dark.css' | relative_url }}">
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                {% include page-header.html %}
+            </header>
+
+            <p>Welcome to the archive. You can find posts organized by year below:</p>
+
+            {% assign years = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+            {% assign sorted_years = years | sort: "name" | reverse %}
+
+            {% assign date = '' %}
+            {% assign post_count = 0 %}
+            {% for year in sorted_years %}
+                {% assign currentdate = year.name %}
+                {% if currentdate != date %}
+                    {% unless forloop.first %}</ul>{% endunless %}
+                    <h1 id="y{{ currentdate }}"><a href="{{ '/archive/' | append: currentdate | relative_url }}">{{ currentdate }}</a> ({{ year.items | size }})</h1>
+                    <ul>
+                    {% assign date = currentdate %}
+                    {% assign post_count = 0 %}
+                {% endif %}
+
+                {% for post in year.items %}
+                    {% if post_count < 5 %}
+                        <li>
+                            <strong>[ {{ post.date | date: "%m-%d" }} ]</strong>: <a href="{{ post.url }}">{{ post.title }}</a>
+                        </li>
+                        {% assign post_count = post_count | plus: 1 %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if forloop.last and post_count > 0 %}</ul>{% endif %}
+            {% endfor %}
+
+            <footer>
+                
+            </footer>
+        </div>
+    </body>
+</html>

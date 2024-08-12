@@ -1,0 +1,104 @@
+body {
+    background-color: rgb(33, 37, 41);
+    margin: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    /* If you want to change the site height you can remove overflow-y */
+    /* pureSnow will automatically detect height of body tag */
+    overflow-y: hidden;
+    overflow: hidden;
+    color: white;
+}
+
+/* Background element styling */
+.snowflake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(white, white);
+  /* Workaround for Chromium's selective color inversion */
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px white);
+}
+.bgOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1); /* Adjust the RGBA values to control transparency and color */
+    pointer-events: none; /* Allow interactions with the underlying content */
+}
+.bgImageWinter {
+    background-image: url('images/pine.jpg');
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+    /* Other background properties as needed */
+}
+
+
+/* Main website page content */
+#main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%); /* IE 9 */
+    -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
+}
+#text-name {
+    font-family: 'Bebas Neue';
+    font-size: 5em;
+    color: white;
+    margin-bottom: -25px;
+}
+#social-links {
+    font-family: 'Bebas Neue';
+    font-size: 2.5rem;
+    color: white;
+}
+#social-icon {
+    fill: #FFFFFF;
+}
+#social-icon:hover {
+    /* fill: #F6BA8B; */
+    fill: #68B06D;
+}
+
+
+/* Profile picture circular cropper */
+.image-cropper {
+    width: 288px;
+    height: 288px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+}
+img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+}
+
+
+/* URI CSS styling */
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+#profile-picture {
+    align: center;
+}

@@ -1,0 +1,14 @@
+<div class="menu">
+    <ul>
+        <li style="float: left; font-weight: bold;">
+            {% if page.previous %}
+            <a href="{{ page.previous.url }}" class="post-prev">< Previous ({{ page.previous.title }})</a>
+            {% endif %}
+        </li>
+        <li>
+            {% if page.next %}
+            <a href="{{ page.next.url }}" class="post-next">({{ page.next.title }}) Next ></a>
+            {% endif %}
+        </li>
+    </ul>
+</div>
