@@ -277,9 +277,10 @@ switch (currentMonth) {
                 const opacity = Math.max(0, 1 - (rainDrops[i] * fontSize) / canvas.height);
                 // Text coloring
                 //context.fillStyle = `rgba(246, 186, 139, ${opacity})`;
-                //context.fillStyle = `rgba(104, 176, 109, ${opacity})`;
+                // context.fillStyle = `rgba(104, 176, 109, ${opacity})`;
                 context.fillStyle = `rgba(121, 167, 87, ${opacity})`;
-                //context.fillStyle = `rgba(50, 205, 50, ${opacity})`;
+                // context.fillStyle = `rgba(50, 205, 50, ${opacity})`;
+                // context.fillStyle = `rgba(146, 82, 46, ${opacity})`;
 
                 const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
                 context.fillText(text, i * fontSize, rainDrops[i] * fontSize);
