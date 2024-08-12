@@ -40,7 +40,7 @@ switch (currentMonth) {
 
         // Set background coloring elements
         document.body.style.backgroundColor = 'rgb(42, 53, 63)';
-        document.body.style.backgroundImage = "url('pine.jpg')";
+        document.body.style.backgroundImage = "url('../assets/images/pine.jpg')";
         document.body.classList.add('bgImageWinter');
 
         // Create a new div element with class "bgOverlay"
@@ -66,6 +66,8 @@ switch (currentMonth) {
         // Set the basic 'default' values for the snowfall density
         let snowflakesCount = 250; // Snowflake count, can be overridden by configured parameters
         // Change snowfall amount based on current date - In this case, every five days in December
+        
+
         if (day >= 0 && day <= 5) {
             // December 1st -- 5th
             snowflakesCount = 250;
@@ -86,7 +88,7 @@ switch (currentMonth) {
             snowflakesCount = 1500;
         } else if (day == 31) {
             // December 31st -- New Years Eve
-            snowflakesCount = 2500;
+            snowflakesCount = 2000;
         } else {
             // Code to execute if day is not in any of the specified ranges
             snowflakesCount = 250;

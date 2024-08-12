@@ -22,19 +22,23 @@
 
             {% assign years = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
             {% assign sorted_years = years | sort: "name" | reverse %}
-
+            
             {% assign date = '' %}
             {% assign post_count = 0 %}
             {% for year in sorted_years %}
                 {% assign currentdate = year.name %}
                 {% if currentdate != date %}
-                    {% unless forloop.first %}</ul>{% endunless %}
-                    <h1 id="y{{ currentdate }}"><a href="{{ '/archive/' | append: currentdate | relative_url }}">{{ currentdate }}</a> ({{ year.items | size }})</h1>
+                    {% unless forloop.first %}</ul></div>{% endunless %}
+                    <h1 id="y{{ currentdate }}" onclick="togglePosts('posts-{{ currentdate }}')" style="cursor: pointer;">
+                        <span id="arrow-{{ currentdate }}" style="margin-right: 5px;"><!-- {% if forloop.first %}⬇️{% else %}➡️{% endif %} --></span>
+                        <span style="text-decoration: underline;">{{ currentdate }}</span> ({{ year.items | size }})
+                    </h1>
+                    <div id="posts-{{ currentdate }}" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
                     <ul>
                     {% assign date = currentdate %}
                     {% assign post_count = 0 %}
                 {% endif %}
-
+            
                 {% for post in year.items %}
                     {% if post_count < 5 %}
                         <li>
@@ -43,9 +47,24 @@
                         {% assign post_count = post_count | plus: 1 %}
                     {% endif %}
                 {% endfor %}
-
-                {% if forloop.last and post_count > 0 %}</ul>{% endif %}
+            
+                {% if forloop.last and post_count > 0 %}</ul></div>{% endif %}
             {% endfor %}
+            
+
+            <script>
+                function togglePosts(id) {
+                    var postsDiv = document.getElementById(id);
+                    var arrow = document.getElementById('arrow-' + id.split('-')[1]);
+                    if (postsDiv.style.display === "none" || postsDiv.style.display === "") {
+                        postsDiv.style.display = "block";
+                        // arrow.textContent = "⬇️";
+                    } else {
+                        postsDiv.style.display = "none";
+                        // arrow.textContent = "➡️";
+                    }
+                }
+            </script>
 
             <footer>
                 
