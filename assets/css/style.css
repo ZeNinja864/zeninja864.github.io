@@ -10,6 +10,7 @@ body {
     color: white;
 }
 
+
 /* Background element styling */
 .snowflake {
   position: absolute;
@@ -52,18 +53,15 @@ body {
     color: white;
     margin-bottom: -25px;
 }
-#social-links {
-    font-family: 'Bebas Neue';
-    font-size: 2.5rem;
-    color: white;
-}
-#social-icon {
-    fill: #FFFFFF;
-}
-#social-icon:hover {
-    /* fill: #F6BA8B; */
-    fill: #68B06D;
-}
+
+
+.link-container { font-family: 'Bebas Neue'; font-size: 2.5rem; color: white; }
+.link-icon { fill: #FFFFFF; }
+/* .link-icon:hover { fill: #F6BA8B; } */
+.link-icon:hover { fill: #68B06D; }
+
+#section-links {}
+#social-links {}
 
 
 /* Profile picture circular cropper */
@@ -74,11 +72,16 @@ body {
     overflow: hidden;
     border-radius: 50%;
 }
+
 img {
     display: inline;
     margin: 0 auto;
     height: 100%;
     width: auto;
+}
+
+#profile-picture {
+    align: center;
 }
 
 
@@ -97,8 +100,4 @@ a:hover {
 
 a:active {
     text-decoration: none;
-}
-
-#profile-picture {
-    align: center;
 }
