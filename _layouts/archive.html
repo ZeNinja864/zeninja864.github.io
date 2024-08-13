@@ -4,66 +4,70 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{{ page.permalink }}</title>
-
         {% include page-meta.html %}
 
         <link rel="stylesheet" href="{{ '../assets/css/main-dark.css' | relative_url }}">
+
+        <script src="{{ '/assets/scripts/cursor.js' | relative_url }}" defer></script>
+
+        <style>
+            .post-link {
+              color: inherit; /* Inherit color from parent */
+              text-decoration: none; /* Remove underline by default */
+            }
+            .post-link:hover {
+              text-decoration: none; /* Underline on hover */
+            }
+          </style>
     </head>
     <body>
         <div class="container">
             <header>
                 {% include page-header.html %}
             </header>
+            <main>
+                <p>Welcome to the archive!</p>
+                <br>
+                <p>Posts are organized by year; The current year is expanded by default, showing the latest posts, while older years are collapsed and can be expanded to view additional posts.</p>
+                <br>
+                <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">cat ~/posts/archive.yml</span></code></pre></figure>
 
-            <p>Welcome to the archive. You can find posts organized by year below:</p>
+                {% assign years = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
+                {% assign sorted_years = years | sort: "name" | reverse %}
+                
+                {% assign date = '' %}
+                {% for year in sorted_years %}
+                    {% assign currentdate = year.name %}
+                    {% if currentdate != date %}
+                        {% unless forloop.first %}</div>{% endunless %}
 
-            {% assign years = site.posts | group_by_exp:"post", "post.date | date: '%Y'" %}
-            {% assign sorted_years = years | sort: "name" | reverse %}
-            
-            {% assign date = '' %}
-            {% assign post_count = 0 %}
-            {% for year in sorted_years %}
-                {% assign currentdate = year.name %}
-                {% if currentdate != date %}
-                    {% unless forloop.first %}</ul></div>{% endunless %}
-                    <h1 id="y{{ currentdate }}" onclick="togglePosts('posts-{{ currentdate }}')" style="cursor: pointer;">
-                        <span id="arrow-{{ currentdate }}" style="margin-right: 5px;"><!-- {% if forloop.first %}⬇️{% else %}➡️{% endif %} --></span>
-                        <span style="text-decoration: underline;">{{ currentdate }}</span> ({{ year.items | size }})
-                    </h1>
-                    <div id="posts-{{ currentdate }}" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
-                    <ul>
-                    {% assign date = currentdate %}
-                    {% assign post_count = 0 %}
-                {% endif %}
-            
-                {% for post in year.items %}
-                    {% if post_count < 5 %}
-                        <li>
-                            <strong>[ {{ post.date | date: "%m-%d" }} ]</strong>: <a href="{{ post.url }}">{{ post.title }}</a>
-                        </li>
-                        {% assign post_count = post_count | plus: 1 %}
+                        <figure class="highlight"><code class="language-yaml" data-lang="yaml"><span class="na" id="y{{ currentdate }}" onclick="togglePosts('posts-{{ currentdate }}')" style="cursor: pointer;">{{ currentdate }} <span class="no">({{ year.items | size }})</span></span><span class="pi">:</span>
+                        <div id="posts-{{ currentdate }}" style="display: {% if forloop.first %}block{% else %}none{% endif %};">
+                        {% assign date = currentdate %}
                     {% endif %}
+                
+                    {% for post in year.items %}
+                        <span class="pi">-</span> <span class="na">[{{ post.date | date: "%m-%d" }}]</span><span class="pi">:</span> <span class="no"><a href="{{ post.url }}" class="post-link">{{ post.title }}</a></span><br>
+                    {% endfor %}
+                
+                    {% if forloop.last and year.items.size > 0 %}</div>{% endif %}
                 {% endfor %}
-            
-                {% if forloop.last and post_count > 0 %}</ul></div>{% endif %}
-            {% endfor %}
-            
+                
+                <figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s"><span id="cursor">█</span></span></code></pre></figure>
 
-            <script>
-                function togglePosts(id) {
-                    var postsDiv = document.getElementById(id);
-                    var arrow = document.getElementById('arrow-' + id.split('-')[1]);
-                    if (postsDiv.style.display === "none" || postsDiv.style.display === "") {
-                        postsDiv.style.display = "block";
-                        // arrow.textContent = "⬇️";
-                    } else {
-                        postsDiv.style.display = "none";
-                        // arrow.textContent = "➡️";
+                <script>
+                    function togglePosts(id) {
+                        var postsDiv = document.getElementById(id);
+                        var arrow = document.getElementById('arrow-' + id.split('-')[1]);
+                        if (postsDiv.style.display === "none" || postsDiv.style.display === "") {
+                            postsDiv.style.display = "block";
+                        } else {
+                            postsDiv.style.display = "none";
+                        }
                     }
-                }
-            </script>
+                </script>
 
+            </main>
             <footer>
                 
             </footer>
