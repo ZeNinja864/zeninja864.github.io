@@ -258,7 +258,7 @@ switch (currentMonth) {
         const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
         const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         const nums = '0123456789';
-        const symbols = '!?><.';
+        const symbols = '!?><.|{}[]';
         const alphabet = katakana + latin + nums;
         // Define character font size
         const fontSize = 12;
