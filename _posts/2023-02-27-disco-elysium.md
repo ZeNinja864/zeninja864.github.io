@@ -2,7 +2,7 @@
 layout: post
 title:  "Disco Eylsium"
 date:   2023-02-27
-categories: games
+tags: ["Games"]
 ---
 Disco Elysium is probably one of my most favorite games, and I would recommend it to anyone.
 It's a captivating and immersive role-playing game that stands out for its unique storytelling, rich character development, and masterful world-building. Set in the fictional city of Revachol, the game puts you in the shoes of a detective suffering from amnesia as he tries to solve a murder case and uncover the truth about his past. The game’s writing is superb, with an attention to detail and character depth that draws you into the game’s world from the very beginning.

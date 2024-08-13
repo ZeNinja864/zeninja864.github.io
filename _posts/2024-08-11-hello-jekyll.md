@@ -2,7 +2,7 @@
 layout: post
 title:  "Hello Jekyll!"
 date:   2024-08-11 15:41:48 -0700
-categories: tests
+tags: ["Announcements"]
 ---
 I’m excited to announce a complete overhaul of the site’s back end, now powered by Jekyll.
 This revamp has not only enhanced the site's performance and content management but also introduced exciting new features. 
